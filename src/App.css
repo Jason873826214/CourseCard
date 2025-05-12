@@ -53,3 +53,11 @@ table {
   border-collapse: collapse;
   width: 100%;
 }
+
+.card-container {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 30px 40px;
+}

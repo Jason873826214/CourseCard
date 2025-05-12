@@ -4,7 +4,7 @@ import CourseCardClass from "./CourseCardClass";
 
 const App = () => {
   return (
-    <>
+    <div className="card-container">
       <CourseCard
         title="26th Full Stack"
         price={5160}
@@ -13,6 +13,7 @@ const App = () => {
         location="Sydney"
         isNew={true}
         imageUrl="https://media.geeksforgeeks.org/wp-content/cdn-uploads/20190626123927/untitlsssssed.png"
+        difficulty="Medium"
       />
 
       <CourseCardClass
@@ -23,8 +24,9 @@ const App = () => {
         location="Melbourne"
         isNew={true}
         imageUrl="https://bigblue.academy/images/image/blog/ai-engineer/group-157.jpg"
+        difficulty="Extremely hard"
       />
-    </>
+    </div>
   );
 };
 

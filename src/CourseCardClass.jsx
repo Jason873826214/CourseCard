@@ -1,10 +1,47 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import "./CourseCard.css";
 
 class CourseCardClass extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showReviewInput: false,
+      reviewSubmitted: false,
+      enrollmentCount: 0,
+      reviewText: "",
+    };
+  }
+
+  handleEnroll = () => {
+    this.setState((prevState) => ({
+      enrollmentCount: prevState.enrollmentCount + 1,
+    }));
+  };
+
+  handleReviewSubmit = () => {
+    this.setState({
+      reviewSubmitted: true,
+      showReviewInput: false,
+    });
+  };
+
   render() {
-    const { title, price, language, duration, location, isNew, imageUrl } =
-      this.props;
+    const {
+      title,
+      price,
+      language,
+      duration,
+      location,
+      isNew,
+      imageUrl,
+      difficulty,
+    } = this.props;
+
+    const { showReviewInput, reviewSubmitted, enrollmentCount, reviewText } =
+      this.state;
+
+    const mainButtonText =
+      difficulty === "Beginner" ? "Start Learning Now!" : "Enroll Now";
 
     return (
       <div className="course-card">
@@ -21,7 +58,39 @@ class CourseCardClass extends Component {
           <strong>Duration:</strong> {duration}
           <br />
           <strong>Location:</strong> {location}
+          <br />
+          <strong>Difficulty:</strong> {difficulty}
         </p>
+
+        <button className="main-btn" onClick={this.handleEnroll}>
+          {mainButtonText}
+        </button>
+        <p>Enrolled: {enrollmentCount} times</p>
+
+        {!reviewSubmitted && !showReviewInput && (
+          <button
+            className="secondary-btn"
+            onClick={() => this.setState({ showReviewInput: true })}
+          >
+            Leave a Review
+          </button>
+        )}
+
+        {!reviewSubmitted && showReviewInput && (
+          <div className="review-box">
+            <input
+              type="text"
+              placeholder="Write your review..."
+              value={reviewText}
+              onChange={(e) => this.setState({ reviewText: e.target.value })}
+            />
+            <button className="secondary-btn" onClick={this.handleReviewSubmit}>
+              Submit Review
+            </button>
+          </div>
+        )}
+
+        {reviewSubmitted && <p className="review-msg">Review Submitted ✅</p>}
       </div>
     );
   }
