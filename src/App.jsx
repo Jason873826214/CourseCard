@@ -14,6 +14,7 @@ const App = () => {
         isNew={true}
         imageUrl="https://media.geeksforgeeks.org/wp-content/cdn-uploads/20190626123927/untitlsssssed.png"
         difficulty="Medium"
+        isCompleted={true}
       />
 
       <CourseCardClass
@@ -25,6 +26,7 @@ const App = () => {
         isNew={true}
         imageUrl="https://bigblue.academy/images/image/blog/ai-engineer/group-157.jpg"
         difficulty="Extremely hard"
+        isCompleted={false}
       />
     </div>
   );

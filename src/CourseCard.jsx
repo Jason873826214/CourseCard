@@ -10,6 +10,7 @@ const CourseCard = ({
   isNew,
   imageUrl,
   difficulty,
+  isCompleted,
 }) => {
   const [showReviewInput, setShowReviewInput] = useState(false);
   const [reviewSubmitted, setReviewSubmitted] = useState(false);
@@ -43,7 +44,7 @@ const CourseCard = ({
       </p>
 
       <button className="main-btn" onClick={handleEnroll}>
-        {difficulty === "Beginner" ? "Start Learning Now!" : "Enroll Now"}
+        {isCompleted ? "Revisit Course" : "Start Course"}
       </button>
       <p>Enrolled: {enrollmentCount} times</p>
 

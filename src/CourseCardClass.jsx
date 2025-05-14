@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import "./CourseCard.css";
 
 class CourseCardClass extends Component {
@@ -35,13 +35,13 @@ class CourseCardClass extends Component {
       isNew,
       imageUrl,
       difficulty,
+      isCompleted,
     } = this.props;
 
     const { showReviewInput, reviewSubmitted, enrollmentCount, reviewText } =
       this.state;
 
-    const mainButtonText =
-      difficulty === "Beginner" ? "Start Learning Now!" : "Enroll Now";
+    const mainButtonText = isCompleted ? "Revisit Course" : "Start Course";
 
     return (
       <div className="course-card">
