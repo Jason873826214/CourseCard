@@ -16,6 +16,8 @@ const CourseCard = ({
   const [reviewSubmitted, setReviewSubmitted] = useState(false);
   const [enrollmentCount, setEnrollmentCount] = useState(0);
   const [reviewText, setReviewText] = useState("");
+  
+
 
   const handleEnroll = () => {
     setEnrollmentCount(enrollmentCount + 1);
@@ -25,6 +27,8 @@ const CourseCard = ({
     setReviewSubmitted(true);
     setShowReviewInput(false);
   };
+  const shouldShowReviewButton = !reviewSubmitted && !showReviewInput;
+  const shouldShowReviewInput = !reviewSubmitted && showReviewInput;
 
   return (
     <div className="course-card">
@@ -48,7 +52,7 @@ const CourseCard = ({
       </button>
       <p>Enrolled: {enrollmentCount} times</p>
 
-      {!reviewSubmitted && !showReviewInput && (
+      {shouldShowReviewButton && (
         <button
           className="secondary-btn"
           onClick={() => setShowReviewInput(true)}
@@ -57,7 +61,7 @@ const CourseCard = ({
         </button>
       )}
 
-      {!reviewSubmitted && showReviewInput && (
+      {shouldShowReviewInput && (
         <div className="review-box">
           <input
             type="text"
